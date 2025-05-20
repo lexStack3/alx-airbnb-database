@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `Payment` (
     amount DECIMAL NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     payment_method ENUM('credit_card', 'paypal', 'stripe') NOT NULL,
-    FOREIGN KEY (booking) REFERENCES `Booking`(booking_id) ON DELETE CASCADE,
+    FOREIGN KEY (booking_id) REFERENCES `Booking`(booking_id) ON DELETE CASCADE,
     INDEX (payment_id)
     ) ENGINE=InnoDB;
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `Review` (
     rating INT NOT NULL CHECK(rating BETWEEN 1 AND 5),
     comment TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (property) REFERENCES `Property`(property_id) ON DELETE CASCADE,
+    FOREIGN KEY (property_id) REFERENCES `Property`(property_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES `User`(user_id) ON DELETE CASCADE,
     INDEX (review_id)
     ) ENGINE=InnoDB;
