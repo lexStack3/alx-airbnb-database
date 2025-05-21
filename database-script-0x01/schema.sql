@@ -68,10 +68,10 @@ CREATE TABLE IF NOT EXISTS `Review` (
 CREATE TABLE IF NOT EXISTS `Message` (
     message_id CHAR(36) PRIMARY KEY,
     sender_id CHAR(36),
-    recipent_id CHAR(36),
+    recipient_id CHAR(36),
     message_body TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender_id) REFERENCES `User`(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (recipent_id) REFERENCES `User`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (recipient_id) REFERENCES `User`(user_id) ON DELETE CASCADE,
     INDEX (message_id)
     ) ENGINE=InnoDB;
