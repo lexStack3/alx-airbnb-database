@@ -19,7 +19,7 @@ SELECT
 FROM (
     SELECT
         Property.property_id,
-        Property.namei AS property_name,
+        Property.name AS property_name,
         COUNT(Booking.booking_id) AS total_bookings
     FROM Property
     LEFT JOIN Booking ON Property.property_id = Booking.property_id
