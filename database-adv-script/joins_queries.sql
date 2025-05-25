@@ -1,3 +1,4 @@
+-- MySQL Version
 SELECT User.user_id AS user_id,
     first_name,
     last_name,
@@ -52,3 +53,20 @@ FROM Booking
 LEFT JOIN User ON Booking.user_id = User.user_id
 
 ORDER BY first_name ASC;
+
+
+-- PostgreSQL version
+SELECT
+    User.user_id,
+    User.first_name,
+    User.last_name,
+    Booking.booking_id,
+    Booking.start_date,
+    Booking.end_date,
+    Booking.total_price,
+    Booking.status,
+    Booking.created_at
+FROM User
+FULL OUTER JOIN Booking
+ON User.user_id = Booking.user_id
+ORDER BY User.first_name;
