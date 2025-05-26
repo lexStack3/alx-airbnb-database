@@ -32,6 +32,28 @@ CREATE INDEX idx_review_rating ON Review(rating)
 
 ## Perfornance Measurement
 Performance was measured before and after indexing using `EXPLAIN` and `ANALYZE` in MySQL.
+```sql
+EXPLAIN ANALYZE SELECT
+    property_id,
+    name AS property_name
+FROM Property
+WHERE (
+    SELECT AVG(rating)
+    FROM Review
+    WHERE Review.property_id = Review.property_id
+) > 4.0;
+--------------------------------------------------
+EXPLAIN ANALYZE SELECT
+    user_id,
+    first_name,
+    last_name
+FROM User
+WHERE (
+    SELECT COUNT(*)
+    FROM Booking
+    WHERE Booking.user_id = User.user_id
+) > 3;
+```
 
 ## Before Indexing on `subqueries.sql`
 ![Before indexing](/img/before/subqueries.png)
