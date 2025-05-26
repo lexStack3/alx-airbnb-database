@@ -109,7 +109,8 @@ SELECT
 FROM Booking b
 LEFT JOIN User u ON b.user_id = u.user_id
 LEFT JOIN Property p ON b.property_id = p.property_id
-LEFT JOIN Payment pay ON b.booking_id = pay.booking_id;
+LEFT JOIN Payment pay ON b.booking_id = pay.booking_id
+WHERE u.user_id IS NOT NULL AND p.property_id IS NOT NULL;
 ```
 
 ### EXPLAIN ANALYZE (After Optimization)
